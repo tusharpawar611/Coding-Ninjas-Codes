@@ -1,0 +1,68 @@
+// Stack Using 2 Queues
+import java.util.*;
+public class Stack {
+
+    //Define the data members
+	Queue<Integer> q1;
+	Queue<Integer> q2;
+
+    public Stack() {
+        //Implement the Constructor
+        q1 = new LinkedList<Integer>();
+        q2 = new LinkedList<Integer>();
+        
+    }
+
+
+
+    /*----------------- Public Functions of Stack -----------------*/
+
+
+    public int getSize() { 
+        return q1.size();
+        //Implement the getSize() function
+    }
+
+    public boolean isEmpty() {
+        return q1.isEmpty();
+        //Implement the isEmpty() function
+    }
+
+    public void push(int element) {
+        q1.add(element);
+        //Implement the push(element) function
+    }
+
+    public int pop() {
+        //Implement the pop() function
+        if(q1.size()==0){
+            return -1;
+        }
+        int re=0;
+        while(q1.size()>1){
+             q2.add(q1.remove());
+        }
+        re =  q1.remove();
+        while(q2.size()!=0){
+            q1.add(q2.remove());
+        }
+        return re;
+    }
+
+    public int top() {
+        //Implement the top() function
+         if(q1.size()==0){
+            return -1;
+        }
+        int re=0;
+        while(q1.size()>1){
+             q2.add(q1.remove());
+        }
+        re =  q1.remove();
+        q2.add(re);
+        while(q2.size()!=0){
+            q1.add(q2.remove());
+        }
+        return re;
+    }
+}
