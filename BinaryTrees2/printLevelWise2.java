@@ -19,7 +19,8 @@
 	}
 
 */
-import java.util.*;
+import java.util.LinkedList;
+import java.util.Queue;
 public class Solution {
 
 	public static void printLevelWise(BinaryTreeNode<Integer> root) {
@@ -41,8 +42,9 @@ public class Solution {
             }
             
             while(nodecount>0){
-                BinaryTreeNode<Integer> curr = que.remove();
-                    s+=curr.data+" ";
+                BinaryTreeNode<Integer> curr = que.peek();
+                System.out.print(curr.data+" ");
+                que.remove();
                 if(curr.left!=null){
                     que.add(curr.left);
                 }
@@ -51,7 +53,7 @@ public class Solution {
                 }
                 nodecount--;
             }
-                System.out.println(s);
+                System.out.println();
             
         }
         
